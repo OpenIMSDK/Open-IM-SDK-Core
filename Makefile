@@ -2,8 +2,17 @@
 
 BINARY_NAME=ws_wrapper/cmd/open_im_sdk_server
 BIN_DIR=../../bin/
+DEPLOY_DIR=../../deploy/
 LAN_FILE=.go
 GO_FILE:=${BINARY_NAME}${LAN_FILE}
+
+build-linux:
+	go mod tidy
+	CGO_ENABLED=1 go build -o open_im_sdk_server ws_wrapper/cmd/open_im_sdk_server.go
+
+# 打包 open_im_sdk
+build-image:
+	docker build -t openim/sdk:latest -f ./Dockerfile.sdk .
 
 build:
 	CGO_ENABLED=1 GOOS=linux GOARCH=amd64 go build -o ${BINARY_NAME}  ${GO_FILE}
