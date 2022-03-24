@@ -55,6 +55,13 @@ type MarkGroupMessageAsReadParams []string
 
 const MarkGroupMessageAsReadCallback = constant.SuccessCallbackDefault
 
+type UpdateMessageParams struct {
+	ClientMsgID string `json:"clientMsgID"`
+	Ex          string `json:"ex"`
+}
+
+const UpdateMessageCallback = constant.SuccessCallbackDefault
+
 type SetConversationStatusParams struct {
 	UserId string `json:"userID" validate:"required"`
 	Status int    `json:"status" validate:"required"`
