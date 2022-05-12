@@ -41,6 +41,14 @@ var (
 	ErrNotSupportFunction      = ErrInfo{ErrCode: 906, ErrMsg: NotSupportFunction.Error()}
 )
 
+const (
+	// 自定义的过滤器错误码最小值
+	ErrCodeFilterMin = 30001
+
+	// 自定义的过滤器错误码大值
+	ErrCodeFilterMax = 39999
+)
+
 var (
 	ParseTokenMsg       = errors.New("parse token failed")
 	TokenExpiredMsg     = errors.New("token is timed out, please log in again")
